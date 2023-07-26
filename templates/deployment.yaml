@@ -1,0 +1,167 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": before-hook-creation
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    control-plane: controller-manager
+  name: activemq-artemis-cm
+  namespace: activemq-artemis-operator
+  resourceVersion: "309131"
+  uid: bac2f36e-9ddc-42cc-a689-aa5c43dde77b
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        control-plane: controller-manager
+        name: activemq-artemis-operator
+    spec:
+      containers:
+      - args:
+        - --zap-log-level=info
+        - --zap-encoder=console
+        - --zap-time-encoding=iso8601
+        - --leader-elect
+        command:
+        - /home/activemq-artemis-operator/bin/entrypoint
+        env:
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2150
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:0.2.2
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2160
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:0.2.4
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2180
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:0.2.10
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2200
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:1.0.0
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2210
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:1.0.2
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2220
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:1.0.5
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2230
+          value: quay.io/artemiscloud/activemq-artemis-broker-init:1.0.7
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2250
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:e2438670831bad39bb08147bbebe67
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2260
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:634f3d8fd620607b56e0360a191d23
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2270
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:9bbb915855f29ea16950a3fd50d0b9
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2271
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:fc9b9a4c7550d84fd90335dd4f9e0d
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_2280
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:264b33a9aad90d32a41258904f3509
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2150
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.0
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2160
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.1
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2180
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.7
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2200
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.0
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2210
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.2
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2220
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.5
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2230
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.7
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2250
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:2d155bffd246f26f516a6075
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2260
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:f25db980c3229e66cf48690a
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2270
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:a4628c2591ec06caf21a3467
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2271
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:2895b2cf6292c951a0cdde78
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_2280
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:42230ce9d11a1949a5bb73b6
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Kubernetes_new_image_sha
+          value: quay.io/artemiscloud/activemq-artemis-broker-kubernetes@sha256:9ce4e68085a7
+        - name: RELATED_IMAGE_ActiveMQ_Artemis_Broker_Init_new_image_sha
+          value: quay.io/artemiscloud/activemq-artemis-broker-init@sha256:cf3b43a9e360
+        - name: OPERATOR_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels['name']
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: ENABLE_WEBHOOKS
+          value: "false"
+        image: quay.io/artemiscloud/activemq-artemis-operator:1.0.14
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: manager
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readyz
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: true
+      serviceAccount: activemq-artemis-cm
+      serviceAccountName: activemq-artemis-cm
+      terminationGracePeriodSeconds: 10
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-07-25T08:58:30Z"
+    lastUpdateTime: "2023-07-25T08:58:30Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-07-25T08:58:30Z"
+    lastUpdateTime: "2023-07-25T08:58:41Z"
+    message: ReplicaSet "activemq-artemis-cm-6ff87ffd8c" has successfully
+      progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
