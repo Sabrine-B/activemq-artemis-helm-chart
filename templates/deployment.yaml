@@ -8,7 +8,7 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     control-plane: controller-manager
-  name: activemq-artemis-cm
+  name: activemq
   namespace: activemq-artemis-operator
   resourceVersion: "309131"
   uid: bac2f36e-9ddc-42cc-a689-aa5c43dde77b
