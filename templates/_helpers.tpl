@@ -46,7 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "activemq-artemis-helm-chart.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "activemq-artemis-cm.name" . }}
+app.kubernetes.io/name: {{ include "activemq-artemis-helm-chart.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
