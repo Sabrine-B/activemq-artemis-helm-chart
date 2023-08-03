@@ -1,5 +1,5 @@
 apiVersion: v2
-name: activemq-artemis-cm
+name: activemq-artemis-helm-chart
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
