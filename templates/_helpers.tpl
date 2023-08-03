@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "activemq-artemis-cm.name" -}}
+{{- define "activemq-artemis-helm-chart.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "activemq-artemis-cm.fullname" -}}
+{{- define "activemq-artemis-helm-chart.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "activemq-artemis-cm.chart" -}}
+{{- define "activemq-artemis-helm-chart.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "activemq-artemis-cm.labels" -}}
-helm.sh/chart: {{ include "activemq-artemis-cm.chart" . }}
-{{ include "activemq-artemis-cm.selectorLabels" . }}
+{{- define "activemq-artemis-helm-chart.labels" -}}
+helm.sh/chart: {{ include "activemq-artemis-helm-chart.chart" . }}
+{{ include "activemq-artemis-helm-chart.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,7 +45,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "activemq-artemis-cm.selectorLabels" -}}
+{{- define "activemq-artemis-helm-chart.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "activemq-artemis-cm.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
@@ -53,9 +53,9 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "activemq-artemis-cm.serviceAccountName" -}}
+{{- define "activemq-artemis-helm-chart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "activemq-artemis-cm.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "activemq-artemis-helm-chart.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
