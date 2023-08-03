@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "activemq-artemis-cm.fullname" . }}
+  name: {{ include "activemq-artemis-helm-chart.fullname" . }}
   labels:
-    {{- include "activemq-artemis-cm.labels" . | nindent 4 }}
+    {{- include "activemq-artemis-helm-chart.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "activemq-artemis-cm.fullname" . }}
+    name: {{ include "activemq-artemis-helm-chart.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
