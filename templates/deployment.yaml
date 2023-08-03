@@ -156,7 +156,7 @@ status:
     type: Available
   - lastTransitionTime: "2023-07-25T08:58:30Z"
     lastUpdateTime: "2023-07-25T08:58:41Z"
-    message: ReplicaSet "activemq-artemis-cm-6ff87ffd8c" has successfully
+    message: ReplicaSet "activemq-artemis-helm-chart-6ff87ffd8c" has successfully
       progressed.
     reason: NewReplicaSetAvailable
     status: "True"
