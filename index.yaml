@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  activemq-artemis-helm-chart:
+  - apiVersion: v2
+    appVersion: 1.0.14
+    created: "2023-08-03T23:15:12.133850048+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 6e062cd76cd35f272f4387a1d96a2bd2141d4b822a0c759e5e558b2c8fa6fd3f
+    name: activemq-artemis-helm-chart
+    type: application
+    urls:
+    - activemq-artemis-helm-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-08-03T23:15:12.131058663+02:00"
